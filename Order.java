@@ -12,7 +12,10 @@ public class Order {
 
     static String beverage2;
     static String beverage3;
-
+   
+    static String beverageSize1;
+    static String beverageSize2;
+    static String beverageSize3;
 
 
     public String getPizzaSize() {
