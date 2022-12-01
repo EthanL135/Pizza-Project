@@ -6,6 +6,7 @@ public class Order {
     static String pizzaTopping1;
      static String pizzaTopping2;
      static String pizzaTopping3;
+    static String pizzaTopping4;
 
    static String beverage1;
 
