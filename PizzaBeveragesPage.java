@@ -21,9 +21,9 @@ public class PizzaBeveragesPage extends JFrame implements ActionListener {
 
     JLabel cokeL = new JLabel("$3.00");
     JLabel waterL = new JLabel("$3.00");
-    JLabel lemonadeL = new JLabel("3.00");
-    JLabel sweetTeaL = new JLabel("3.00");
-    JLabel rootBeerL = new JLabel("3.00");
+    JLabel lemonadeL = new JLabel("$3.00");
+    JLabel sweetTeaL = new JLabel("$3.00");
+    JLabel rootBeerL = new JLabel("$3.00");
 
     JButton nextB = new JButton("NEXT");
     JButton previousB = new JButton("PREVIOUS");
@@ -37,10 +37,15 @@ public class PizzaBeveragesPage extends JFrame implements ActionListener {
         panel.setLayout(new GridLayout(2,5,5,10));
 
         panel.add(cokeB);
+        cokeB.addActionListener(this);
         panel.add(waterB);
+        waterB.addActionListener(this);
         panel.add(lemonadeB);
+        lemonadeB.addActionListener(this);
         panel.add(sweetTeaB);
+        sweetTeaB.addActionListener(this);
         panel.add(rootBeerB);
+        rootBeerB.addActionListener(this);
 
         panel.add(cokeL);
         panel.add(waterL);

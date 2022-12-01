@@ -22,7 +22,7 @@ public class BeverageSizes implements ActionListener {
 
     JLabel ounce8L =new JLabel("$1.00");
     JLabel ounce12L =new JLabel("$2.00");
-    JLabel ounce16L =new JLabel("3.00");
+    JLabel ounce16L =new JLabel("$3.00");
 
 
 
@@ -35,8 +35,11 @@ public class BeverageSizes implements ActionListener {
         panel.setLayout(new GridLayout(2,3,5,10));
 
         panel.add(ounce8B);
+        ounce8B.addActionListener(this);
         panel.add(ounce12B);
+        ounce12B.addActionListener(this);
         panel.add(ounce16B);
+        ounce16B.addActionListener(this);
 
         panel.add(ounce8L);
         panel.add(ounce12L);
@@ -97,6 +100,7 @@ public class BeverageSizes implements ActionListener {
 
         if(e.getSource()==nextB) {
             frame.dispose();
+            OrderSummary orderSummary = new OrderSummary();
             //Load next Screen
         }
 

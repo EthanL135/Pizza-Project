@@ -1,22 +1,20 @@
 public class Order {
     static String pizzaSize;
-    
-   static String crustType
-    
+    static String crustType;
     static String pizzaTopping1;
-     static String pizzaTopping2;
-     static String pizzaTopping3;
+    static String pizzaTopping2;
+    static String pizzaTopping3;
+
     static String pizzaTopping4;
 
-   static String beverage1;
-
+    static String beverage1;
     static String beverage2;
     static String beverage3;
-   
+
+
     static String beverageSize1;
     static String beverageSize2;
     static String beverageSize3;
-
 
     public String getPizzaSize() {
         return pizzaSize;

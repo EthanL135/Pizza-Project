@@ -64,6 +64,7 @@ public class LoginPage extends JPanel implements ActionListener {
 
         panel.add(signUpLabel);
         panel.add(signUpButton);
+        signUpButton.addActionListener(this);
         panel.add(messageLabel);
 
         customerPhoneNumLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -93,6 +94,11 @@ public class LoginPage extends JPanel implements ActionListener {
             customerPass.setText("");
         }
 
+        if(e.getSource()==signUpButton) {
+            frame.dispose();
+            SignUpPage signUpPage = new SignUpPage();
+        }
+
         if(e.getSource()==signInButton) {
             String cPhoneNum = customerPhoneNum.getText();
             String cpassword = String.valueOf(customerPass.getPassword());
@@ -102,6 +108,7 @@ public class LoginPage extends JPanel implements ActionListener {
                     messageLabel.setForeground(Color.GREEN);
                     messageLabel.setText("Sign In Successful");
 
+                    //HERE
                     frame.dispose();
                     PizzaSizePage pizzaSizePage = new PizzaSizePage();
                 } else {
