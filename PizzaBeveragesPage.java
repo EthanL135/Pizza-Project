@@ -25,8 +25,6 @@ public class PizzaBeveragesPage extends JFrame implements ActionListener {
     JLabel sweetTeaL = new JLabel("4");
     JLabel rootBeerL = new JLabel("5");
 
-    Image cokeI = new ImageIcon("Pizza.jpg").getImage();
-
     JButton nextB = new JButton("NEXT");
     JButton previousB = new JButton("PREVIOUS");
 
@@ -83,6 +81,7 @@ public class PizzaBeveragesPage extends JFrame implements ActionListener {
         nextPanel.setLayout(new BorderLayout());
 
         nextPanel.add(nextB);
+        nextB.addActionListener(this);
 
         //Previous panel
         frame.add(prePanel);
@@ -91,6 +90,7 @@ public class PizzaBeveragesPage extends JFrame implements ActionListener {
         prePanel.setLayout(new BorderLayout());
 
         prePanel.add(previousB);
+        previousB.addActionListener(this);
 
         //Creates the frame for the window
         frame.setSize(600,500);
@@ -99,19 +99,11 @@ public class PizzaBeveragesPage extends JFrame implements ActionListener {
         frame.setVisible(true);
     }
 
-
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-        Graphics2D g2D = (Graphics2D) g;
-
-        g2D.drawImage(cokeI,0,0,null);
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==previousB) {
             frame.dispose();
+            PizzaToppings pizzaToppings = new PizzaToppings();
             //Load pizza toppings class
         }
 
@@ -121,23 +113,35 @@ public class PizzaBeveragesPage extends JFrame implements ActionListener {
         }
 
         if(e.getSource()==cokeB) {
-
+            beverageAvailable("Coca-Cola");
         }
 
         if(e.getSource()==waterB) {
-
+            beverageAvailable("Water");
         }
 
         if(e.getSource()==lemonadeB) {
-
+            beverageAvailable("Lemonade");
         }
 
         if(e.getSource()==sweetTeaB) {
-
+            beverageAvailable("Sweet Tea");
         }
 
         if(e.getSource()==rootBeerB) {
+            beverageAvailable("Root Beer");
+        }
+    }
 
+    void beverageAvailable(String b){
+        if(Order.beverageSize1 == null){
+            Order.beverageSize1 = b;
+        }
+        else if(Order.beverageSize2 == null){
+            Order.beverageSize2 = b;
+        }
+        else if(Order.beverageSize3 == null){
+            Order.beverageSize3 = b;
         }
     }
 }

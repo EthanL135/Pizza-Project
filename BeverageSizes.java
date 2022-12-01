@@ -69,6 +69,7 @@ public class BeverageSizes implements ActionListener {
         nextPanel.setLayout(new BorderLayout());
 
         nextPanel.add(nextB);
+        nextB.addActionListener(this);
 
         //Previous panel
         frame.add(prePanel);
@@ -77,6 +78,7 @@ public class BeverageSizes implements ActionListener {
         prePanel.setLayout(new BorderLayout());
 
         prePanel.add(previousB);
+        previousB.addActionListener(this);
 
         //Creates the frame for the window
         frame.setSize(600,500);
@@ -89,25 +91,37 @@ public class BeverageSizes implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==previousB) {
             frame.dispose();
+            PizzaBeveragesPage pizzaBeveragesPage = new PizzaBeveragesPage();
             //Load pizza toppings class
         }
 
         if(e.getSource()==nextB) {
             frame.dispose();
-            BeverageSizes beverageSizes = new BeverageSizes();
             //Load next Screen
         }
 
         if(e.getSource()==ounce8B) {
-
+            bevSizeAvailable("8 oz.");
         }
 
         if(e.getSource()==ounce12B) {
-
+            bevSizeAvailable("12 oz.");
         }
 
         if(e.getSource()==ounce16B) {
+            bevSizeAvailable("16 oz.");
+        }
+    }
 
+    void bevSizeAvailable(String s){
+        if(Order.beverage1 == null){
+            Order.beverage1 = s;
+        }
+        else if(Order.beverage2 == null){
+            Order.beverage2 = s;
+        }
+        else if(Order.beverage3 == null){
+            Order.beverage3 = s;
         }
     }
 }
