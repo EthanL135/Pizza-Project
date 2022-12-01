@@ -20,9 +20,9 @@ public class BeverageSizes implements ActionListener {
     JButton ounce12B =new JButton("12 oz.");
     JButton ounce16B =new JButton("16 oz.");
 
-    JLabel ounce8L =new JLabel("1");
-    JLabel ounce12L =new JLabel("2");
-    JLabel ounce16L =new JLabel("3");
+    JLabel ounce8L =new JLabel("$1.00");
+    JLabel ounce12L =new JLabel("$2.00");
+    JLabel ounce16L =new JLabel("3.00");
 
 
 

@@ -19,11 +19,11 @@ public class PizzaBeveragesPage extends JFrame implements ActionListener {
     JButton sweetTeaB = new JButton("Sweet Tea");
     JButton rootBeerB = new JButton("Root Beer");
 
-    JLabel cokeL = new JLabel("1");
-    JLabel waterL = new JLabel("2");
-    JLabel lemonadeL = new JLabel("3");
-    JLabel sweetTeaL = new JLabel("4");
-    JLabel rootBeerL = new JLabel("5");
+    JLabel cokeL = new JLabel("$3.00");
+    JLabel waterL = new JLabel("$3.00");
+    JLabel lemonadeL = new JLabel("3.00");
+    JLabel sweetTeaL = new JLabel("3.00");
+    JLabel rootBeerL = new JLabel("3.00");
 
     JButton nextB = new JButton("NEXT");
     JButton previousB = new JButton("PREVIOUS");
