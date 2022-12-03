@@ -139,14 +139,14 @@ public class PizzaBeveragesPage extends JFrame implements ActionListener {
     }
 
     void beverageAvailable(String b){
-        if(Order.beverageSize1 == null){
-            Order.beverageSize1 = b;
+        if(Order.beverage1 == null){
+            Order.beverage1 = b;
         }
-        else if(Order.beverageSize2 == null){
-            Order.beverageSize2 = b;
+        else if(Order.beverage2 == null){
+            Order.beverage2 = b;
         }
-        else if(Order.beverageSize3 == null){
-            Order.beverageSize3 = b;
+        else if(Order.beverage3 == null){
+            Order.beverage3 = b;
         }
     }
 }
