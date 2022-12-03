@@ -5,33 +5,37 @@ public class TotalCost {
 
     public void orderTotal(){
         //adds size price to subtotal
-        switch (Order.pizzaSize){
-            case "Personal":
-                subtotal += 7.99;
-                break;
-            case "Small":
-                subtotal += 10.99;
-                break;
-            case "Medium":
-                subtotal += 14.99;
-                break;
-            case "Large":
-                subtotal += 19.99;
-                break;
+        if(Order.pizzaSize != null){
+            switch (Order.pizzaSize){
+                case "Personal":
+                    subtotal += 7.99;
+                    break;
+                case "Small":
+                    subtotal += 10.99;
+                    break;
+                case "Medium":
+                    subtotal += 14.99;
+                    break;
+                case "Large":
+                    subtotal += 19.99;
+                    break;
+            }
         }
 
         //adds crust type to subtotal
-        switch (Order.crustType){
-            case "regular":
-            case "thin":
-                subtotal += 0.25;
-                break;
-            case "thick":
-                subtotal += 0.50;
-                break;
-            case "cheese":
-                subtotal += 1.00;
-                break;
+        if(Order.crustType != null){
+            switch (Order.crustType){
+                case "regular":
+                case "thin":
+                    subtotal += 0.25;
+                    break;
+                case "thick":
+                    subtotal += 0.50;
+                    break;
+                case "cheese":
+                    subtotal += 1.00;
+                    break;
+            }
         }
 
         //adds toppings price to subtotal
