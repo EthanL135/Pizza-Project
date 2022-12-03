@@ -31,6 +31,10 @@ public class Receipt implements ActionListener {
     JLabel total = new JLabel("Total: $00.00");
 
     JButton exitButton = new JButton("EXIT");
+    
+    File cDatabase = new File("/CSE 1322/Labs/GUI/src/Customer Info Database.txt");
+    Scanner scan = new Scanner(cDatabase);
+    String[] databaseArray;
 
     Receipt() {
         frame.setLayout(null);
@@ -72,6 +76,16 @@ public class Receipt implements ActionListener {
 
         phoneNumL.setHorizontalAlignment(JLabel.CENTER);
         phoneNumL.setVerticalAlignment(JLabel.CENTER);
+        
+         if(scan.hasNextLine()) {
+            databaseArray = scan.nextLine().split(",");
+
+            orderFNameF.setText(databaseArray[0]);
+            orderLNameF.setText(databaseArray[1]);
+            cardNumF.setText(databaseArray[6]);
+            deliveryAddressF.setText(databaseArray[5]);
+            phoneNumF.setText(databaseArray[2]);
+        }
 
         //Panel 2
         frame.add(panel2);
