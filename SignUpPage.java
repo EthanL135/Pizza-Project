@@ -2,8 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
-import java.util.Scanner;
 
 public class SignUpPage implements ActionListener {
 
@@ -38,11 +36,9 @@ public class SignUpPage implements ActionListener {
     JButton signInB = new JButton("Sign In?");
     JButton signUpB = new JButton("Sign Up/To Order");
 
-    File cDatabase = new File("/CSE 1322/Labs/GUI/src/Customer Info Database.txt");
-    FileWriter fw = new FileWriter(cDatabase, true);
-    PrintWriter pw = new PrintWriter(fw);
+    CustomerInfo customerInfo = new CustomerInfo();
 
-    SignUpPage() throws IOException {
+    SignUpPage() {
         frame.setLayout(null);
 
         frame.add(panel);
@@ -146,45 +142,12 @@ public class SignUpPage implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==signInB) {
             frame.dispose();
-
-            try {
-                LoginPage loginPage = new LoginPage();
-            } catch (FileNotFoundException fileNotFoundException) {
-                fileNotFoundException.printStackTrace();
-            }
+            LoginPage loginPage = new LoginPage(customerInfo.getSignInInfo());
         }
 
         if(e.getSource()==signUpB) {
-            String fName = fNameF.getText();
-            String lName = lNameF.getText();
-            String phoneNum = pNumF.getText();
-            String password = passwordF.getText();
-            String reTypePass = reTypePassF.getText();
-            String address = deliveryAddressF.getText();
-            String cardNum = cardNumF.getText();
-            String expDate = cardExpDateF.getText();
-            String cvv = cardCvvF.getText();
-
-            if(reTypePass.equals(password)) {
-                pw.print(fName + ",");
-                pw.print(lName + ",");
-                pw.print(phoneNum + ",");
-                pw.print(password + ",");
-                pw.print(reTypePass + ",");
-                pw.print(address + ",");
-                pw.print(cardNum + ",");
-                pw.print(expDate + ",");
-                pw.println(cvv);
-
-                pw.close();
-
-                frame.dispose();
-                PizzaSizePage pizzaSizePage = new PizzaSizePage();
-                //Load pizza size class
-            } else {
-                passwordL.setForeground(Color.RED);
-                reTypePassL.setForeground(Color.RED);
-            }
+            frame.dispose();
+            //Load pizza size class
         }
     }
 }
