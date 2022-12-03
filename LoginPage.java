@@ -2,7 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class LoginPage extends JPanel implements ActionListener {
 
@@ -11,8 +15,6 @@ public class LoginPage extends JPanel implements ActionListener {
     JPanel title = new JPanel();
 
     JLabel titleLabel = new JLabel("Login Page");
-
-//    Image pizzaBg = new ImageIcon("Pizza.jpg").getImage();
 
     JButton signInButton = new JButton("Sign In");
     JButton clearButton = new JButton("Clear");
@@ -27,11 +29,9 @@ public class LoginPage extends JPanel implements ActionListener {
     JLabel messageLabel = new JLabel("");
     JLabel signUpLabel = new JLabel("New Customer? Sign up Here: ");
 
+    File userLoginInfoFile = new File("/CSE 1322/Labs/GUI/src/Customer Login Database.txt");
 
-    HashMap<String,String> signInInfo;
-
-    LoginPage(HashMap<String,String> cSignInInfo) {
-        signInInfo = cSignInInfo;
+    LoginPage() throws FileNotFoundException {
 
         frame.setLayout(null);
         frame.setSize(500,350);
@@ -81,10 +81,8 @@ public class LoginPage extends JPanel implements ActionListener {
 
         //Creates the frame for the window
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setSize(500,500);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        //frame.pack();
     }
 
     @Override
@@ -96,34 +94,47 @@ public class LoginPage extends JPanel implements ActionListener {
 
         if(e.getSource()==signUpButton) {
             frame.dispose();
-            SignUpPage signUpPage = new SignUpPage();
+            try {
+                SignUpPage signUpPage = new SignUpPage();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
         }
 
         if(e.getSource()==signInButton) {
-            String cPhoneNum = customerPhoneNum.getText();
-            String cpassword = String.valueOf(customerPass.getPassword());
+            try {
+                Scanner scan = new Scanner(userLoginInfoFile);
+                String cPhoneNum = customerPhoneNum.getText();
+                String cpassword = String.valueOf(customerPass.getPassword());
+                String login;
+                String[] userLogin;
 
-            if(signInInfo.containsKey(cPhoneNum)) {
-                if(signInInfo.get(cPhoneNum).equals(cpassword)) {
-                    messageLabel.setForeground(Color.GREEN);
-                    messageLabel.setText("Sign In Successful");
+                while (scan.hasNextLine()) {
+                    login = scan.nextLine();
+                    userLogin = login.split(",");
 
-                    //HERE
-                    frame.dispose();
-                    PizzaSizePage pizzaSizePage = new PizzaSizePage();
-                } else {
-                    messageLabel.setForeground(Color.RED);
-                    messageLabel.setText("Incorrect Password");
+                    if(cPhoneNum.equals(userLogin[0])) {
+                        if(cpassword.equals(userLogin[1])) {
+                            messageLabel.setForeground(Color.GREEN);
+                            messageLabel.setText("Sign In Successful");
+
+                            //HERE
+                            frame.dispose();
+                            PizzaSizePage pizzaSizePage = new PizzaSizePage();
+                        } else {
+                            messageLabel.setForeground(Color.RED);
+                            messageLabel.setText("Incorrect Password");
+                            return;
+                        }
+                    } else {
+                        messageLabel.setForeground(Color.RED);
+                        messageLabel.setText("Phone Number Not Found");
+                        return;
+                    }
                 }
-            } else {
-                messageLabel.setForeground(Color.RED);
-                messageLabel.setText("Phone Number Not Found");
+            } catch (FileNotFoundException fileNotFoundException) {
+                fileNotFoundException.printStackTrace();
             }
         }
     }
-//    public void paint(Graphics g) {
-//        super.paint(g);
-//        Graphics2D g2D = (Graphics2D) g;
-//        g2D.drawImage(pizzaBg,0,0,null);
-//    }
 }
