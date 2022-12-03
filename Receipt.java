@@ -34,6 +34,12 @@ public class Receipt implements ActionListener {
 
     Receipt() {
         frame.setLayout(null);
+        
+        TotalCost t = new TotalCost();
+        t.orderTotal();
+        subTotal.setText("Subtotal: $" + String.valueOf(t.subtotal));
+        taxTotal.setText("Tax: $" + String.valueOf(Math.round(t.tax * 100.0) / 100.0));
+        total.setText("Total: $" + String.valueOf(Math.round(t.total * 100.0) / 100.0));
 
         //Panel 1
         frame.add(panel);
