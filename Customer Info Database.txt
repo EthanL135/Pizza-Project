@@ -1,0 +1,21 @@
+if(e.getSource()==signInButton) {
+            String cPhoneNum = customerPhoneNum.getText();
+            String cpassword = String.valueOf(customerPass.getPassword());
+
+            if(signInInfo.containsKey(cPhoneNum)) {
+                if(signInInfo.get(cPhoneNum).equals(cpassword)) {
+                    messageLabel.setForeground(Color.GREEN);
+                    messageLabel.setText("Sign In Successful");
+
+                    //HERE
+                    frame.dispose();
+                    PizzaSizePage pizzaSizePage = new PizzaSizePage();
+                } else {
+                    messageLabel.setForeground(Color.RED);
+                    messageLabel.setText("Incorrect Password");
+                }
+            } else {
+                messageLabel.setForeground(Color.RED);
+                messageLabel.setText("Phone Number Not Found");
+            }
+        }
