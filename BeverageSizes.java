@@ -118,14 +118,14 @@ public class BeverageSizes implements ActionListener {
     }
 
     void bevSizeAvailable(String s){
-        if(Order.beverage1 == null){
-            Order.beverage1 = s;
+        if(Order.beverageSize1 == null){
+            Order.beverageSize1 = s;
         }
-        else if(Order.beverage2 == null){
-            Order.beverage2 = s;
+        else if(Order.beverageSize2 == null){
+            Order.beverageSize2 = s;
         }
-        else if(Order.beverage3 == null){
-            Order.beverage3 = s;
+        else if(Order.beverageSize3 == null){
+            Order.beverageSize3 = s;
         }
     }
 }
